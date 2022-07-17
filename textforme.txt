@@ -1,52 +1,20 @@
-Least Recently Used (LRU) cache and used 2 data structures namely Doubly 
-Linked List and Hash Map to implement it from scratch and compared the 
-performance of LRU with FIFO cache.
-
-Cache is a small amount of very fast and expensive memory which we get in 
-our processors and RAMs. Since its expensive, its usage has to be highly 
-optimized! One such way is to use the Least Recently Used (LRU) Cache 
-Algorithm also known as one of the Page Replacement Algorithms. It 
-maintains the things that need to be stored in cache and which are to be 
-thrown out.
-
+Least Recently Used (LRU) cache and used 2 data structures namely Doubly Linked List and Hash Map to implement it from scratch. Cache is a small amount of very fast and expensive memory which we get in our processors and RAMs. 
 There are many ways to implement the algorithm. I have used:
 1. a Doubly Linked List for Cache
 2. a Hash Map for storing key and corresponding nodes
-Consider a stream of integers approaching the cache memory. Let size of 
-cache be 4, i.e, it can hold 4 integers.
-When the cache is empty, it stores the first integer, say 1, also this is 
-a Cache Miss or "Fault". The next integer is 2. Since it is not in cache 
-it gets stored too. Next come 3 & 4 and those also get stored. 
+Consider a stream of integers approaching the cache memory. Let size of cache be 4, i.e, it can hold 4 integers.
+When the cache is empty, it stores the first integer, say 1, also this is a Cache Miss or "Fault". The next integer is 2. 
+Since it is not in cache it gets stored too. Next come 3 & 4 and those also get stored. 
 Now the next integer coming is 5.
 Now the new integer coming is 2. Now, we already have 2 in our Cache 
-(A Cache Hit!). This is the point where LRU cache has its core. 
+(A Cache Hit). This is the point where LRU cache has its core. 
 We update the position of 2 to be the newest.
 Now, if an integer 6 comes up, we would not delete 2, instead 3 gets 
 removed since it was used the earliest.
 
-The hash map stores the key and the corresponding node at which that key 
-is present. The node or "dll" has a 3 data points:
-1. first is an integer "value" which stores the generated random number
-2. two pointers to "dll" to store the address of left and right or 
-previous and next node of the doubly linked list or say "cache".
-3. The function "make_hash" recieves the map to which the key:address pair
-is to stored, the key and the address itself. This function adds the key 
-address pair to the corresponding hashmap.
-4. "add_to_cache" function recieves the hashmap, pointer to the pointer of
-head and end of the doubly linked list or cache, the key and the amount of 
-cache size used. It makes a new node and adds to the fron of the cache. 
-Note that it is only called when the cache size is not fully used.
-
-The function "LRUCache" is the implementation or meat of our algorithm. 
-it recieves the haspmap, key, pointer to pointer of head and end, and the 
-size of cache. Firstly it checks whether we already have the key present, 
-for this, it sees the hashmap. If the key is not present, it then checks 
-if the cache has free space or full. If there is free space, it calls the 
-"add_to_cache", else, it modifies the
-cache by adding the a new "dll" to the "head" of the cache and removes the 
-last element of the cache. The new "end" is the last second element of the 
-previous cache. Now, if the key is present, we modify the cache. The node 
-that has this key is made the head and the adjacent two nodes are connected 
-to each other. This way, the recently used key is updated so that, it doesn't 
-get removed over a key which is less used. Note that we only remove nodes 
-from the end of the cache as that is the least recently used node.
+The function "LRUCache" is the implementation or meat of our algorithm. it recieves the haspmap, key, pointer to pointer of head and end, and the 
+size of cache. Firstly it checks whether we already have the key present, for this, it sees the hashmap. If the key is not present, it then checks 
+if the cache has free space or full. If there is free space, it calls the "add_to_cache", else, it modifies thecache by adding the a new "dll" to the "head" of the cache 
+and removes the last element of the cache. The new "end" is the last second element of the previous cache. Now, if the key is present, we modify the cache. The node that 
+has this key is made the head and the adjacent two nodes are connected to each other. This way, the recently used key is updated so that, it doesn't 
+get removed over a key which is less used. Note that we only remove nodes from the end of the cache as that is the least recently used node.
