@@ -1,4 +1,5 @@
-Least Recently Used (LRU) cache and used 2 data structures namely Doubly Linked List and Hash Map to implement it from scratch. Cache is a small amount of very fast and expensive memory which we get in our processors and RAMs. 
+Least Recently Used (LRU) cache. 
+used 2 data structures namely Doubly Linked List and Hash Map to implement it from scratch. 
 here, i used:
 1. a Doubly Linked List for Cache
 2. a Hash Map for storing key and corresponding nodes
